@@ -31,6 +31,14 @@ public class Order {
         return this.products;
     }
 
+    public LocalDate getDate() {
+        return this.orderDate;
+    }
+
+    public void setDate(LocalDate date) {
+        this.orderDate = date;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
