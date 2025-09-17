@@ -25,6 +25,10 @@ public class Product {
         return this.category;
     }
 
+    public void discountPerc(int dis) {
+        this.price = this.price * (1 - ((double) dis / 100));
+    }
+
     @Override
     public String toString() {
         return "Product{" +

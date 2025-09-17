@@ -10,9 +10,9 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-        Product prodotto1 = new Product("Lavatrice", "elettrodomestici", 500);
-        Product prodotto2 = new Product("T-shirt", "vestiti", 20);
-        Product prodotto3 = new Product("trapano a colonna", "fai da te", 1000);
+        Product prodotto1 = new Product("Lavatrice", "boys", 500);
+        Product prodotto2 = new Product("T-shirt", "boys", 20);
+        Product prodotto3 = new Product("trapano a colonna", "boys", 1000);
         Product prodotto4 = new Product("il guardiano degli innocenti", "books", 200);
         Product prodotto5 = new Product("ritorno al nuovo mondo", "books", 50);
         Product prodotto6 = new Product("il ritorno del re", "books", 300);
@@ -40,9 +40,13 @@ public class Main {
         Order ordine2 = new Order(cliente2, listaProd2);
 
         ArrayList<Product> listaProd3 = new ArrayList<>();
-        listaProd3.add(prodotto4);
-        listaProd3.add(prodotto6);
+        listaProd3.add(prodotto1);
         listaProd3.add(prodotto2);
+        listaProd3.add(prodotto3);
+        listaProd3.add(prodotto4);
+        listaProd3.add(prodotto5);
+        listaProd3.add(prodotto6);
+        listaProd3.add(prodotto7);
         listaProd3.add(prodotto8);
 
         Order ordine3 = new Order(cliente3, listaProd3);
@@ -63,6 +67,15 @@ public class Main {
         ).toList();
         System.out.println("lista ordini con almeno un prodotto baby");
         System.out.println(babyOrd);
+
+
+        List<Product> boysProds = listaProd3.stream().filter(product -> product.getCategory().equals("boys")).toList();
+
+
+        for (int i = 0; i < babyOrd.size(); i++) {
+            boysProds.get(i).discountPerc(10);
+        }
+        System.out.println(boysProds);
 
     }
 }
