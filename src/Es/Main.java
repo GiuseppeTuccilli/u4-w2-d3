@@ -20,9 +20,10 @@ public class Main {
         Product prodotto6 = new Product("il ritorno del re", "books", 300);
         Product prodotto7 = new Product("passeggino", "baby", 300);
         Product prodotto8 = new Product("altro", "baby", 300);
+
         Customer cliente1 = new Customer("pippo", 2);
-        Customer cliente2 = new Customer("pluto", 2);
-        Customer cliente3 = new Customer("tizio", 2);
+        Customer cliente2 = new Customer("pluto", 3);
+        Customer cliente3 = new Customer("tizio", 3);
 
         ArrayList<Product> listaProd = new ArrayList<>();
 
@@ -86,7 +87,7 @@ public class Main {
         for (int i = 0; i < babyOrd.size(); i++) {
             boysProds.get(i).discountPerc(10);
         }
-        
+
         System.out.println(boysProds);
 
         for (int i = 0; i < 2; i++) {
@@ -94,10 +95,12 @@ public class Main {
         }
 
         Predicate<Order> afterFeb = order -> order.getDate().isAfter(febVentuno);
+        Predicate<Order> isTierTwo = order -> order.getCustomer().getTier() == 2;
 
         System.out.println("ordini nel periodo di tempo");
 
-        List<Order> timeRangeOrds = orders.stream().filter(afterFeb.and(order -> order.getDate().isBefore(aprVentuno))).toList();
+
+        List<Order> timeRangeOrds = orders.stream().filter(afterFeb.and(order -> order.getDate().isBefore(aprVentuno)).and(isTierTwo)).toList();
         System.out.println(timeRangeOrds);
         HashSet<Product> timeRangeProds = new HashSet<>();
 

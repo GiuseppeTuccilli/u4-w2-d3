@@ -39,6 +39,10 @@ public class Order {
         this.orderDate = date;
     }
 
+    public Customer getCustomer() {
+        return this.customer;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
